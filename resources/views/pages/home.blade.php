@@ -36,47 +36,21 @@
     </section>
 
 
-
     <section class="p-5" id="about">
         <div class="container">
             <div class="row justify-content-center">
-
+                @foreach($posts as $post)
                 <div class="col">
                     <div class="card" style="width: 18rem;">
                         <img src="{{ URL('images/pen.jpg') }}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <h5 class="card-title">{{ $post->title }}</h5>
+                            <p class="card-text text-truncate">{{ $post->post }}</p>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
                 </div>
-
-
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ URL('images/pen.jpg') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ URL('images/pen.jpg') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-
-
+                @endforeach
             </div>
 
         </div>
