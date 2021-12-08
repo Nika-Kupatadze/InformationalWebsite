@@ -18,7 +18,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('pages.home')->with('posts', Posts::query()->paginate(3));
+        return view('pages.home')->with('posts', Posts::query()->paginate(4));
     }
 
     /**

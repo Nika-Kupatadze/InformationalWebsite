@@ -38,10 +38,11 @@
 
     <section class="p-5" id="about">
         <div class="container">
-            <div class="row justify-content-center">
+
+            <div class="row text-center">
                 @foreach($posts as $post)
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
+                <div class="col d-flex align-items-stretch">
+                    <div class="card card-body flex-fill" style="width: 18rem;">
                         <img src="{{ URL('images/pen.jpg') }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ $post->title }}</h5>
@@ -53,6 +54,9 @@
                 @endforeach
             </div>
 
+            <div class="d-flex justify-content-center mt-5">
+                {{ $posts->links() }}
+            </div>
         </div>
     </section>
 
