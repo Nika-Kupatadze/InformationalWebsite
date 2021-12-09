@@ -43,14 +43,23 @@ class PostsController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'post' => 'required'
+            'post' => 'required',
+            'image' => 'required|mimes:jpg,png,jpeg|max:5048'
         ]);
 
-        $slug = [
-            'slug' => strtolower(str_replace(" ", "-", $request->input('title')))
-        ];
+        $slug = strtolower(str_replace(" ", "-", $request->input('title')));
 
-        Posts::query()->create($request->all() + $slug);
+        $newImageName = time(). "-" . $slug. '.' . $request->image->extension();
+
+        $request->image->move(public_path('images'), $newImageName);
+
+
+        Posts::query()->create([
+            'title' => $request->input('title'),
+            'post' => $request->input('post'),
+            'slug' => $slug,
+            'image_path' => $newImageName
+        ]);
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully');
     }

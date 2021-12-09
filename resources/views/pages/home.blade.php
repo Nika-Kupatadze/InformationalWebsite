@@ -49,7 +49,7 @@
                 @foreach($posts as $post)
                 <div class="col d-flex align-items-stretch">
                     <div class="card card-body flex-fill" style="width: 18rem;">
-                        <img src="{{ URL('images/pen.jpg') }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('images/' . $post->image_path) }}" class="card-img-top img-thumbnail" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ $post->title }}</h5>
                             <p class="card-text text-truncate">{{ $post->post }}</p>

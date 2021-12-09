@@ -13,6 +13,7 @@ class Posts extends Model
         'slug',
         'post',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'image_path'
     ];
 }
