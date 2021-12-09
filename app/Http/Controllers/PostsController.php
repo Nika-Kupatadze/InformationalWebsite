@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Posts;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 
 class PostsController extends Controller
 {
@@ -24,22 +26,33 @@ class PostsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Application|Factory|View
      */
     public function create()
     {
-        //
+        return view('pages.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return Response
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'post' => 'required'
+        ]);
+
+        $slug = [
+            'slug' => strtolower(str_replace(" ", "-", $request->input('title')))
+        ];
+
+        Posts::query()->create($request->all() + $slug);
+
+        return redirect()->route('posts.index')->with('success', 'Post created successfully');
     }
 
     /**

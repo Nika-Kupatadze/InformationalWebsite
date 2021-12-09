@@ -3,6 +3,7 @@
 @section('title', 'MRGSOFT Blog')
 
 
+
 @section('content')
     <section class="bg-dark text-light p-5 text-center text-sm-start mt-5">
         <div class="container">
@@ -38,6 +39,11 @@
 
     <section class="p-5" id="about">
         <div class="container">
+            <a href="{{ route('posts.create') }}" class="btn btn-success mb-3">Create a post</a>
+
+            @if($msg = session('success'))
+                {{ $msg }}
+            @endif
 
             <div class="row text-center">
                 @foreach($posts as $post)
@@ -47,7 +53,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $post->title }}</h5>
                             <p class="card-text text-truncate">{{ $post->post }}</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
                 </div>
@@ -108,3 +114,5 @@
     </section>
 
 @endsection
+
+

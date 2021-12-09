@@ -14,4 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('posts', PostsController::class);
+Route::resource('posts', PostsController::class)->parameters([
+    'posts' => 'slug'
+]);
