@@ -53,7 +53,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $post->title }}</h5>
                             <p class="card-text text-truncate">{{ $post->post }}</p>
-                            <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">Go somewhere</a>
+                            <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">Read more</a>
                         </div>
                     </div>
                 </div>

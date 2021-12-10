@@ -4,18 +4,24 @@
 
 
 @section('content')
-    <div class="container">
+    <div class="container" style="margin-top: 5%">
+       <div class="d-flex justify-content-center">
         <div class="card" style="width: 18rem;">
-            <img src="{{ URL('images/pen.jpg') }}" class="card-img-top" alt="...">
+            <img src="{{ asset('images/' . $post->image_path) }}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title">{{ $post->title }}</h5>
+                <p class="card-text">{{ $post->post }}</p>
             </div>
 
             <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Edit post</a>
+                <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Do you really want to delete this post?')">Delete post</button>
+                </form>
             </div>
         </div>
+       </div>
     </div>
 @endsection
